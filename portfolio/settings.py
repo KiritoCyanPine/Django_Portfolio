@@ -25,7 +25,7 @@ SECRET_KEY = 'j=waw255a$8^k0!se*8ty+7_6c@7v4@*$k_tfjp_f$h17p6!w='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['example', 'localhost']
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': 'postgres',
+        'PASSWORD': 'MINATO',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -115,12 +119,18 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 
 
 # Media Files (images, videos,files etc.)
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MUDIA_URL = "/media/"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
