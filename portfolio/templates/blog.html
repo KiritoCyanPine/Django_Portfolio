@@ -48,9 +48,36 @@
 
 
 
-
-    {% include '_navbar.html' %}
-
+    <header>  <!-- NAVIGATION BAR-->
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Few words about my page.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">CONTENT</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://kissanime.ru/" class="text-white">kissanime</a></li>
+            <li><a href="#" class="text-white">animekayo</a></li>
+            <li><a href="#" class="text-white">animekaizoku</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-light bg-light shadow-sm ">
+    <div class="container d-flex justify-content-between">
+      <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+        <img src="media/images/animeBUFF_logo.png"  width="180" class="img-fluid">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
 
 
 
@@ -59,11 +86,11 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>Anime BUFF</h1>
+      <h1>BLOG</h1>
       <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
         <a href="http://localhost:8000/admin/" class="btn btn-primary my-2">Go to The Admin Page</a>
-        <a href="blog/" class="btn btn-secondary my-2">Go to the Blog Page</a>
+        <a href=".." class="btn btn-secondary my-2">Go to Te Home Page</a>
       </p>
     </div>
   </section>
@@ -73,27 +100,38 @@
       <div class="row">
 
 
-<!-- LOOPING OVER THE JOBS I've GIVEN IN THE DATABASE -->
+            <div class="container">
 
-        {% for job in jobs.all %}
+                    <h3>LATEST POSTS</h3>
+                    <br><br><br>
+
+            <!-- LOOPING OVER THE BLOGS I've GIVEN IN THE DATABASE -->
+
+                    {% for blogs in blog.all %}
+
+                    <hr>
+
+                    <div class="col-8 rounded" >
+                        <h4>{{blogs.title}}</h4>
+                        {{blogs.pub_date}}
+                        <br>
+                        <img src="{{blogs.image.url}}" class="img-fluid img-thumbnail bg-dark" width="400">
+                        <br>
+                        <br>
+                        <div class="text-secondary">
+                            {{blogs.body}}
+                        </div>
+                        <br><br><br>
+                    </div>
 
 
-        <div class="col-md-3">
-          <div class="card mb-3 shadow-sm">
-            <img class="card-img-top circle" src="{{job.image.url}}" alt="Thumbnail" />
-            <div class="card-body">
-              <p class="card-text">
-                <a href="https://www.youtube.com/">  {{job.summery}}  </a>
-              </p>
+                    {% endfor %}
+            <!-- LOOPING OVER  -->
+
+
             </div>
-          </div>
-        </div>
 
 
-        {% endfor %}
-
-
-<!-- LOOPING OVER  -->
 
 
       </div>
@@ -102,12 +140,15 @@
 
 </main>
 
-
-
-{% include '_footer.html' %}
-
-
-
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="/docs/4.5/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

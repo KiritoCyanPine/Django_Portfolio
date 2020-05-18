@@ -48,9 +48,7 @@
 
 
 
-
-    {% include '_navbar.html' %}
-
+  {% include '_navbar.html' %}
 
 
 
@@ -59,11 +57,11 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>Anime BUFF</h1>
+      <h1>BLOG</h1>
       <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
         <a href="http://localhost:8000/admin/" class="btn btn-primary my-2">Go to The Admin Page</a>
-        <a href="blog/" class="btn btn-secondary my-2">Go to the Blog Page</a>
+        <a href=".." class="btn btn-secondary my-2">Go to Te Home Page</a>
       </p>
     </div>
   </section>
@@ -73,27 +71,38 @@
       <div class="row">
 
 
-<!-- LOOPING OVER THE JOBS I've GIVEN IN THE DATABASE -->
+            <div class="container">
 
-        {% for job in jobs.all %}
+                    <h3>LATEST POSTS</h3>
+                    <br><br><br>
+
+            <!-- LOOPING OVER THE BLOGS I've GIVEN IN THE DATABASE -->
+
+                    {% for blogs in blog.all %}
+
+                    <hr>
+
+                    <div class="col-8 rounded" >
+                        <h4>{{blogs.title}}</h4>
+                        {{blogs.pub_date}}
+                        <br>
+                        <img src="{{blogs.image.url}}" class="img-fluid img-thumbnail bg-dark" width="400">
+                        <br>
+                        <br>
+                        <div class="text-secondary">
+                            {{blogs.summery}}
+                        </div>
+                        <br><br><br>
+                    </div>
 
 
-        <div class="col-md-3">
-          <div class="card mb-3 shadow-sm">
-            <img class="card-img-top circle" src="{{job.image.url}}" alt="Thumbnail" />
-            <div class="card-body">
-              <p class="card-text">
-                <a href="https://www.youtube.com/">  {{job.summery}}  </a>
-              </p>
+                    {% endfor %}
+            <!-- LOOPING OVER  -->
+
+
             </div>
-          </div>
-        </div>
 
 
-        {% endfor %}
-
-
-<!-- LOOPING OVER  -->
 
 
       </div>
@@ -103,9 +112,7 @@
 </main>
 
 
-
 {% include '_footer.html' %}
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
